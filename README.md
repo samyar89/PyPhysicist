@@ -1,0 +1,3 @@
+- 👋 Hi, I’m Samyar Noruzi
+- 👀 I’m interested in Python, AI and machine learning
+- 🌱 I’m currently learning Intermediate-Python, C++ and HTML-CSS
