@@ -1,1 +1,10 @@
-A Python Module with Physics Calculations.
+👨‍💻Samyar Noruzi
+
+
+🤖AI Programmer
+
+🐍Python Programmer
+
+📄Has CEH and MCSA certificate
+
+💀☠Gray hat Hacker
