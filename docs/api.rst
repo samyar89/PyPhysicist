@@ -1,44 +1,65 @@
 API Reference
 =============
 
-Core helpers
-------------
+Public API
+----------
 
 .. automodule:: PyPhysicist
    :members:
 
-Energy
-------
+Constants & Units
+-----------------
 
-.. automodule:: Energy
+.. automodule:: PyPhysicist.constants
+   :members:
+
+.. automodule:: PyPhysicist.units
    :members:
 
 Mechanics
 ---------
 
-.. automodule:: mechanics
+.. automodule:: PyPhysicist.mechanics.kinematics
+   :members:
+
+.. automodule:: PyPhysicist.mechanics.dynamics
+   :members:
+
+.. automodule:: PyPhysicist.mechanics.energy
    :members:
 
 Electromagnetism
 ----------------
 
-.. automodule:: electromagnetism
+.. automodule:: PyPhysicist.electromagnetism.electrostatics
+   :members:
+
+.. automodule:: PyPhysicist.electromagnetism.circuits
    :members:
 
 Thermodynamics
 --------------
 
-.. automodule:: thermodynamics
+.. automodule:: PyPhysicist.thermodynamics.ideal_gases
+   :members:
+
+.. automodule:: PyPhysicist.thermodynamics.heat
    :members:
 
 Waves & Optics
 --------------
 
-.. automodule:: waves_optics
+.. automodule:: PyPhysicist.waves_optics.waves
+   :members:
+
+.. automodule:: PyPhysicist.waves_optics.optics
    :members:
 
 Relativity
 ----------
 
-.. automodule:: relativity
+.. automodule:: PyPhysicist.relativity.special
+   :members:
+
+.. automodule:: PyPhysicist.relativity.gravity
    :members:

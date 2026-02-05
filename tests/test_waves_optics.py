@@ -1,6 +1,6 @@
 import pytest
 
-import waves_optics
+from PyPhysicist import waves_optics
 
 
 def test_frequency():

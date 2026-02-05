@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from setuptools import setup
+from setuptools import find_packages, setup
 
 setup(
     name='PyPhysicist',
@@ -8,4 +8,6 @@ setup(
     author='Samyar Noruzi',
     author_email='s.noruzi1389@gmail.com',
     description='A Physics Module for Python!',
+    packages=find_packages(),
+    install_requires=['numpy'],
 )

@@ -1,6 +1,6 @@
 import pytest
 
-import relativity
+from PyPhysicist import relativity
 
 
 def test_time_dilation():
