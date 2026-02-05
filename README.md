@@ -85,5 +85,4 @@ pytest
 
 ## License
 
-This project is provided as-is under the terms described by the repository
-owner.
+This project is licensed under the MIT License. See the `LICENSE` file for details.
