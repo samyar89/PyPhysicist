@@ -10,4 +10,5 @@ computations.
    :caption: Contents
 
    usage
+   topics/index
    api

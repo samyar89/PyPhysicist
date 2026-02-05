@@ -1,6 +1,6 @@
 import pytest
 
-import mechanics
+from PyPhysicist import mechanics
 
 
 def test_momentum():

@@ -1,6 +1,6 @@
 import pytest
 
-import thermodynamics
+from PyPhysicist import thermodynamics
 
 
 def test_ideal_gas_pressure():

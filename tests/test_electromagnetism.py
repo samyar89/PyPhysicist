@@ -1,6 +1,6 @@
 import pytest
 
-import electromagnetism
+from PyPhysicist import electromagnetism
 
 
 def test_coulomb_force():

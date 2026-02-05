@@ -2,7 +2,8 @@
 
 A lightweight collection of physics formulas implemented in Python, covering
 mechanics, electromagnetism, thermodynamics, waves/optics, relativity, and common
-energy calculations.
+energy calculations. The library now ships with a domain-oriented package layout,
+SI constants, and a lightweight quantity helper for dimensional awareness.
 
 ## نصب (Installation)
 
@@ -22,10 +23,10 @@ import PyPhysicist as pp
 force = pp.newton_second_law(mass=2.0, acceleration=9.81)
 
 # Electromagnetism
-voltage = pp.V(I=0.5, R=10.0)
+voltage = pp.voltage(current=0.5, resistance=10.0)
 
 # Relativity
-energy = pp.relativistic_energy(mass=1.0, c=299_792_458)
+energy = pp.relativistic_energy(mass=1.0)
 
 print(force, voltage, energy)
 ```
@@ -33,15 +34,11 @@ print(force, voltage, energy)
 ## Example calculations
 
 ```python
-from PyPhysicist import (
-    momentum,
-    ideal_gas_pressure,
-    refractive_index,
-)
+from PyPhysicist import momentum, ideal_gas_pressure, refractive_index
 
 p = momentum(mass=3.2, velocity=4.5)
-pressure = ideal_gas_pressure(n=1.0, r=8.314, t=300.0, v=0.024)
-index = refractive_index(c=299_792_458, v=200_000_000)
+pressure = ideal_gas_pressure(n=1.0, t=300.0, v=0.024)
+index = refractive_index(speed_of_light=299_792_458, medium_speed=200_000_000)
 
 print(p, pressure, index)
 ```
@@ -70,15 +67,15 @@ pytest
 
 1. Clean, extensible API design
 
-   Split modules into subpackages (for example: `mechanics/`, `electricity/`, `relativity/`, `constants/`) so the structure stays clean as the project grows. Right now everything is in `__init__.py`, which makes extension harder.
+   The library now ships a domain-first layout (for example: `PyPhysicist/mechanics/kinematics.py`, `PyPhysicist/electromagnetism/circuits.py`, `PyPhysicist/constants/si.py`) to keep growth organized.
 
-   Use PEP8 naming (snake_case functions like `schwarzschild_radius` or `kinetic_energy`) to align with the Python ecosystem; currently there are functions such as `V`, `I`, `R`, `KINETIC_ENERGY` with mixed styles.
+   PEP8 naming is the default (snake_case functions like `schwarzschild_radius` or `kinetic_energy`). Symbolic aliases like `V`, `I`, `R`, or `KINETIC_ENERGY` remain available for discoverability.
 
-   Add `__all__` and targeted re-exports so consumers can see what is public (especially once modules are split).
+   `__all__` and targeted re-exports now clarify the public API surface.
 
 2. Units management and dimensional-safety
 
-   Add unit support (with `pint` or `astropy.units`) so users cannot accidentally provide values in the wrong units; this is critical for a physics library.
+   A lightweight `Quantity` type is included under `PyPhysicist.units`, and the API is compatible with Pint-style quantities for dimensional safety.
 
    Define a simple internal `Quantity` (if you want to avoid external dependencies) that stores a value and its unit.
 
