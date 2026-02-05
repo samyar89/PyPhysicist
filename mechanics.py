@@ -2,51 +2,66 @@
 
 
 def momentum(mass: float, velocity: float):
-    """
-    mass: kg
-    velocity: m/s
+    """Calculate linear momentum.
 
-    In this case, the momentum is obtained in kg·m/s.
+    Args:
+        mass: Mass in kilograms (kg).
+        velocity: Velocity in meters per second (m/s).
+
+    Returns:
+        Momentum in kilogram meters per second (kg·m/s).
     """
     return mass * velocity
 
 
 def newton_second_law(mass: float, acceleration: float):
-    """
-    mass: kg
-    acceleration: m/s^2
+    """Calculate force using Newton's second law.
 
-    In this case, the force is obtained in Newtons.
+    Args:
+        mass: Mass in kilograms (kg).
+        acceleration: Acceleration in meters per second squared (m/s²).
+
+    Returns:
+        Force in newtons (N).
     """
     return mass * acceleration
 
 
 def spring_potential_energy(k: float, x: float):
-    """
-    k: N/m
-    x: m
+    """Calculate potential energy stored in a spring.
 
-    In this case, the spring potential energy is obtained in Joules.
+    Args:
+        k: Spring constant in newtons per meter (N/m).
+        x: Displacement from equilibrium in meters (m).
+
+    Returns:
+        Spring potential energy in joules (J).
     """
     return 0.5 * k * (x ** 2)
 
 
 def centripetal_acceleration(velocity: float, radius: float):
-    """
-    velocity: m/s
-    radius: m
+    """Calculate centripetal acceleration.
 
-    In this case, the centripetal acceleration is obtained in m/s^2.
+    Args:
+        velocity: Tangential speed in meters per second (m/s).
+        radius: Radius of circular motion in meters (m).
+
+    Returns:
+        Centripetal acceleration in meters per second squared (m/s²).
     """
     return (velocity ** 2) / radius
 
 
 def centripetal_force(mass: float, velocity: float, radius: float):
-    """
-    mass: kg
-    velocity: m/s
-    radius: m
+    """Calculate centripetal force for circular motion.
 
-    In this case, the centripetal force is obtained in Newtons.
+    Args:
+        mass: Mass in kilograms (kg).
+        velocity: Tangential speed in meters per second (m/s).
+        radius: Radius of circular motion in meters (m).
+
+    Returns:
+        Centripetal force in newtons (N).
     """
     return mass * (velocity ** 2) / radius
