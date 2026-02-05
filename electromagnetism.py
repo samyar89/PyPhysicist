@@ -2,51 +2,66 @@
 
 
 def coulomb_force(q1: float, q2: float, r: float):
-    """
-    q1: C
-    q2: C
-    r: m
+    """Calculate electrostatic force using Coulomb's law.
 
-    In this case, the electrostatic force is obtained in Newtons.
+    Args:
+        q1: Charge 1 in coulombs (C).
+        q2: Charge 2 in coulombs (C).
+        r: Separation distance in meters (m).
+
+    Returns:
+        Electrostatic force in newtons (N).
     """
     k = 8.9875517923 * (10 ** 9)
     return k * (q1 * q2) / (r ** 2)
 
 
 def electric_field(force: float, charge: float):
-    """
-    force: N
-    charge: C
+    """Calculate electric field strength.
 
-    In this case, the electric field is obtained in N/C.
+    Args:
+        force: Force in newtons (N).
+        charge: Charge in coulombs (C).
+
+    Returns:
+        Electric field strength in newtons per coulomb (N/C).
     """
     return force / charge
 
 
 def capacitance(charge: float, voltage: float):
-    """
-    charge: C
-    voltage: V
+    """Calculate capacitance.
 
-    In this case, the capacitance is obtained in Farads.
+    Args:
+        charge: Charge in coulombs (C).
+        voltage: Voltage in volts (V).
+
+    Returns:
+        Capacitance in farads (F).
     """
     return charge / voltage
 
 
 def resistance_series(*resistances: float):
-    """
-    resistances: Ω
+    """Calculate equivalent resistance for series resistors.
 
-    In this case, the equivalent resistance is obtained in Ohms.
+    Args:
+        *resistances: Individual resistances in ohms (Ω).
+
+    Returns:
+        Equivalent resistance in ohms (Ω).
     """
     return sum(resistances)
 
 
 def resistance_parallel(*resistances: float):
-    """
-    resistances: Ω
+    """Calculate equivalent resistance for parallel resistors.
 
-    In this case, the equivalent resistance is obtained in Ohms.
+    Args:
+        *resistances: Individual resistances in ohms (Ω).
+
+    Returns:
+        Equivalent resistance in ohms (Ω).
     """
     total = 0.0
     for resistance in resistances:
