@@ -331,7 +331,7 @@ DEFAULT_FORMULAS: dict[str, LatexFormula] = {
     "resistance_parallel": LatexFormula(
         name="resistance_parallel",
         result_symbol="R_{eq}",
-        rhs_template=r"\\left( {resistances} \\right)^{-1}",
+        rhs_template=r"\\left( {resistances} \\right)^{{-1}}",
         parameters=("resistances",),
         parameter_symbols={"resistances": "\\frac{1}{R_1} + \\frac{1}{R_2} + \\cdots + \\frac{1}{R_n}"},
         evaluator=resistance_parallel,
