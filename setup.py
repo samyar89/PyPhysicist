@@ -11,3 +11,11 @@ setup(
     packages=find_packages(),
     install_requires=['numpy'],
 )
+=======
+setup(
+    name='PyPhysicist',
+    version='1.0.2',
+    author='Samyar Norouzi',
+    author_email='s.noruzi1389@gmail.com',
+    description='A Physics Module for Python!',
+)
