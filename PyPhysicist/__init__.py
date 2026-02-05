@@ -58,6 +58,7 @@ from .mechanics.kinematics import (
     centripetal_acceleration,
     velocity,
 )
+from .latex import DEFAULT_FORMULAS, LatexCalculation, LatexConverter, LatexFormula
 from .relativity.gravity import Schwarzschild_radius, schwarzschild_radius
 from .relativity.special import (
     length_contraction,
@@ -134,4 +135,8 @@ __all__ = [
     "GRAVITATIONAL_POTENTIAL_ENERGY",
     "MECHANICAL_ENERGY",
     "ELASTIC_POTENTIAL_ENERGY",
+    "LatexCalculation",
+    "LatexConverter",
+    "LatexFormula",
+    "DEFAULT_FORMULAS",
 ]
