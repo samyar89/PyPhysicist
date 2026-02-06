@@ -164,7 +164,7 @@ def ricci_tensor(
 ) -> np.ndarray:
     """Compute the Ricci tensor by contracting the Riemann tensor."""
     riemann = riemann_tensor(metric, coords, step=step)
-    return np.einsum("iikl->kl", riemann)
+    return np.einsum("ijkl->jl", riemann)
 
 
 def scalar_curvature(
