@@ -1,8 +1,7 @@
 """Relativistic gravity formulas."""
 
-import numpy as np
-
 from ..constants import GRAVITATIONAL_CONSTANT, SPEED_OF_LIGHT
+from ..units import coerce_value, wrap_quantity
 
 
 def schwarzschild_radius(mass: float, g: float = GRAVITATIONAL_CONSTANT, c: float = SPEED_OF_LIGHT):
@@ -10,10 +9,11 @@ def schwarzschild_radius(mass: float, g: float = GRAVITATIONAL_CONSTANT, c: floa
 
     Dimensional safety is critical: mass, g, and c must be in compatible units.
     """
-    mass = np.asarray(mass)
-    g = np.asarray(g)
-    c = np.asarray(c)
-    return (2 * g * mass) / (c ** 2)
+    mass_value, _ = coerce_value(mass, "kg", name="mass")
+    g_value, _ = coerce_value(g, "m^3/kg*s^2", name="g")
+    c_value, _ = coerce_value(c, "m/s", name="c")
+    result = (2 * g_value * mass_value) / (c_value ** 2)
+    return wrap_quantity(result, "m", mass, g, c)
 
 
 Schwarzschild_radius = schwarzschild_radius
