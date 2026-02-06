@@ -88,6 +88,7 @@ from . import quantum_chaos
 from . import combinatorial_dynamics
 from . import astro_numerics
 from . import logic_gates_physics
+from . import physlearn
 
 __all__ = [
     "AVOGADRO_CONSTANT",
@@ -147,6 +148,7 @@ __all__ = [
     "combinatorial_dynamics",
     "astro_numerics",
     "logic_gates_physics",
+    "physlearn",
     "V",
     "I",
     "R",
