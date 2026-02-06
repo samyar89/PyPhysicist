@@ -3,11 +3,11 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Any, Dict, Iterable, Optional
+from typing import Any, Dict, Iterable, Optional, Tuple
 
 import numpy as np
 
-from .base import BaseSurrogate, SurrogatePrediction
+from .base import BaseSurrogate, SurrogatePrediction, _extract_xy
 
 
 @dataclass
@@ -18,9 +18,8 @@ class LinearSurrogate(BaseSurrogate):
     intercept_: Optional[np.ndarray] = None
     residual_var_: Optional[np.ndarray] = None
 
-    def fit(self, x: np.ndarray, y: np.ndarray, **kwargs: Any) -> "LinearSurrogate":
-        x = np.asarray(x)
-        y = np.asarray(y)
+    def fit(self, dataset: Any, y: Optional[np.ndarray] = None, **kwargs: Any) -> "LinearSurrogate":
+        x, y = _extract_xy(dataset, y)
         if x.ndim == 1:
             x = x[:, None]
         x_aug = np.c_[x, np.ones((x.shape[0], 1))]
@@ -42,7 +41,10 @@ class LinearSurrogate(BaseSurrogate):
         std = None
         if self.residual_var_ is not None:
             std = np.sqrt(self.residual_var_)
-        return SurrogatePrediction(mean=mean, std=std, metadata={"model": "linear"})
+        variance = None
+        if std is not None:
+            variance = std**2
+        return SurrogatePrediction(mean=mean, variance=variance, metadata={"model": "linear"})
 
 
 @dataclass
@@ -52,9 +54,8 @@ class EnsembleSurrogate(BaseSurrogate):
     members: Iterable[LinearSurrogate]
     member_predictions_: Optional[np.ndarray] = None
 
-    def fit(self, x: np.ndarray, y: np.ndarray, **kwargs: Any) -> "EnsembleSurrogate":
-        x = np.asarray(x)
-        y = np.asarray(y)
+    def fit(self, dataset: Any, y: Optional[np.ndarray] = None, **kwargs: Any) -> "EnsembleSurrogate":
+        x, y = _extract_xy(dataset, y)
         for member in self.members:
             bootstrap_idx = np.random.choice(x.shape[0], size=x.shape[0], replace=True)
             member.fit(x[bootstrap_idx], y[bootstrap_idx])
@@ -69,19 +70,19 @@ class EnsembleSurrogate(BaseSurrogate):
         mean = stacked.mean(axis=0)
         std = stacked.std(axis=0)
         self.member_predictions_ = stacked
-        return SurrogatePrediction(mean=mean, std=std, metadata={"model": "ensemble"})
+        return SurrogatePrediction(mean=mean, variance=std**2, metadata={"model": "ensemble"})
 
 
 @dataclass
 class IdentitySurrogate(BaseSurrogate):
     """Pass-through surrogate for debugging or solver-backed predictions."""
 
-    def fit(self, x: np.ndarray, y: np.ndarray, **kwargs: Any) -> "IdentitySurrogate":
+    def fit(self, dataset: Any, y: Optional[np.ndarray] = None, **kwargs: Any) -> "IdentitySurrogate":
         return self
 
     def predict(self, x: np.ndarray, **kwargs: Any) -> SurrogatePrediction:
         x = np.asarray(x)
-        return SurrogatePrediction(mean=x, std=None, metadata={"model": "identity"})
+        return SurrogatePrediction(mean=x, variance=None, metadata={"model": "identity"})
 
 
 @dataclass
@@ -92,9 +93,8 @@ class PlaceholderSurrogate(BaseSurrogate):
     config: Optional[Dict[str, Any]] = None
     statistics_: Optional[Dict[str, Any]] = None
 
-    def fit(self, x: np.ndarray, y: np.ndarray, **kwargs: Any) -> "PlaceholderSurrogate":
-        x = np.asarray(x)
-        y = np.asarray(y)
+    def fit(self, dataset: Any, y: Optional[np.ndarray] = None, **kwargs: Any) -> "PlaceholderSurrogate":
+        x, y = _extract_xy(dataset, y)
         self.statistics_ = {
             "input_mean": np.mean(x, axis=0),
             "output_mean": np.mean(y, axis=0),
@@ -108,4 +108,4 @@ class PlaceholderSurrogate(BaseSurrogate):
             raise RuntimeError("Model must be fit before prediction.")
         mean = np.broadcast_to(self.statistics_["output_mean"], (x.shape[0],) + np.asarray(self.statistics_["output_mean"]).shape)
         std = np.std(mean, axis=0)
-        return SurrogatePrediction(mean=mean, std=std, metadata={"model": self.name})
+        return SurrogatePrediction(mean=mean, variance=std**2, metadata={"model": self.name})

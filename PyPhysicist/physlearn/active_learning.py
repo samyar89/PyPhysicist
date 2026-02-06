@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Callable, Optional
+from typing import Callable, Optional, Tuple
 
 import numpy as np
 
@@ -35,6 +35,10 @@ def variance_reduction(variances: np.ndarray) -> np.ndarray:
     return np.asarray(variances)
 
 
+def variance_acquisition(variances: np.ndarray) -> np.ndarray:
+    return np.asarray(variances)
+
+
 def query_by_committee(predictions: np.ndarray) -> np.ndarray:
     """Variance across committee members."""
 
@@ -47,6 +51,14 @@ def select_top_k(scores: np.ndarray, k: int) -> np.ndarray:
         raise ValueError("k must be positive.")
     scores = np.asarray(scores)
     return np.argsort(scores)[-k:][::-1]
+
+
+def cost_aware_selection(scores: np.ndarray, costs: np.ndarray, budget: int) -> Tuple[np.ndarray, np.ndarray]:
+    scores = np.asarray(scores)
+    costs = np.asarray(costs)
+    utility = scores / np.clip(costs, 1e-12, None)
+    idx = select_top_k(utility, budget)
+    return idx, utility
 
 
 def acquisition_loop(

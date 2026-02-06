@@ -26,17 +26,21 @@ class EnKF:
         ensemble: np.ndarray,
         observations: np.ndarray,
         observation_noise: float,
+        inflation: float = 1.0,
     ) -> EnKFResult:
         ensemble = np.asarray(ensemble)
         observations = np.asarray(observations)
         if ensemble.ndim != 2:
             raise ValueError("Ensemble must be 2D (n_members, state_dim).")
+        if inflation <= 0:
+            raise ValueError("Inflation factor must be positive.")
         n_members = ensemble.shape[0]
+        state_mean = ensemble.mean(axis=0)
+        ensemble = state_mean + inflation * (ensemble - state_mean)
         obs = self.observation_operator(ensemble)
         obs_mean = obs.mean(axis=0)
-        state_mean = ensemble.mean(axis=0)
         obs_anom = obs - obs_mean
-        state_anom = ensemble - state_mean
+        state_anom = ensemble - ensemble.mean(axis=0)
         obs_cov = (obs_anom.T @ obs_anom) / (n_members - 1)
         cross_cov = (state_anom.T @ obs_anom) / (n_members - 1)
         obs_cov += np.eye(obs_cov.shape[0]) * observation_noise
