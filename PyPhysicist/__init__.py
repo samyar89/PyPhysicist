@@ -90,11 +90,8 @@ from . import astro_numerics
 from . import logic_gates_physics
 from . import physlearn
 from . import fluids
-<<<<<<< codex/add-classical-astrodynamics-submodule-to-pyphysicist
 from . import astrodynamics
-=======
 from . import rocketry
->>>>>>> main
 
 __all__ = [
     "AVOGADRO_CONSTANT",
@@ -156,11 +153,8 @@ __all__ = [
     "logic_gates_physics",
     "physlearn",
     "fluids",
-<<<<<<< codex/add-classical-astrodynamics-submodule-to-pyphysicist
     "astrodynamics",
-=======
     "rocketry",
->>>>>>> main
     "V",
     "I",
     "R",
