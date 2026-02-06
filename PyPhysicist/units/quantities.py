@@ -119,5 +119,21 @@ class Quantity:
     def __neg__(self) -> "Quantity":
         return Quantity(-np.asarray(self.value), self.unit)
 
+    def __pow__(self, power: object, modulo: object = None) -> "Quantity":
+        if modulo is not None:
+            return NotImplemented
+        if not isinstance(power, (int, np.integer)):
+            return NotImplemented
+        from .conversion import UnitError, format_unit, parse_unit
+
+        spec = parse_unit(self.unit)
+        if spec.offset != 0.0:
+            raise UnitError(
+                f"Offset unit '{self.unit}' cannot be raised to a power."
+            )
+        value = (np.asarray(self.value) * spec.scale) ** power
+        dims = {key: exponent * power for key, exponent in spec.dims.items()}
+        return Quantity(value, format_unit(dims))
+
 
 __all__ = ["Quantity"]
