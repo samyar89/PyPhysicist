@@ -84,6 +84,7 @@ from .units import Quantity
 from .waves_optics.optics import refractive_index
 from .waves_optics.waves import frequency, wave_power, wavelength
 from . import optimal_control
+from . import quantum_chaos
 
 __all__ = [
     "AVOGADRO_CONSTANT",
@@ -138,6 +139,7 @@ __all__ = [
     "work",
     "constants",
     "optimal_control",
+    "quantum_chaos",
     "V",
     "I",
     "R",
