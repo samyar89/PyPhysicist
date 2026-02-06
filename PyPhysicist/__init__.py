@@ -86,6 +86,7 @@ from .waves_optics.waves import frequency, wave_power, wavelength
 from . import optimal_control
 from . import quantum_chaos
 from . import combinatorial_dynamics
+from . import astro_numerics
 
 __all__ = [
     "AVOGADRO_CONSTANT",
@@ -143,6 +144,7 @@ __all__ = [
     "optimal_control",
     "quantum_chaos",
     "combinatorial_dynamics",
+    "astro_numerics",
     "V",
     "I",
     "R",
