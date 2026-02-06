@@ -87,6 +87,7 @@ from . import optimal_control
 from . import quantum_chaos
 from . import combinatorial_dynamics
 from . import astro_numerics
+from . import logic_gates_physics
 
 __all__ = [
     "AVOGADRO_CONSTANT",
@@ -145,6 +146,7 @@ __all__ = [
     "quantum_chaos",
     "combinatorial_dynamics",
     "astro_numerics",
+    "logic_gates_physics",
     "V",
     "I",
     "R",
