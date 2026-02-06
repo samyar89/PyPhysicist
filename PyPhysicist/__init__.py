@@ -90,6 +90,7 @@ from . import astro_numerics
 from . import logic_gates_physics
 from . import physlearn
 from . import fluids
+from . import rocketry
 
 __all__ = [
     "AVOGADRO_CONSTANT",
@@ -151,6 +152,7 @@ __all__ = [
     "logic_gates_physics",
     "physlearn",
     "fluids",
+    "rocketry",
     "V",
     "I",
     "R",
