@@ -83,6 +83,7 @@ from .thermodynamics.ideal_gases import ideal_gas_pressure
 from .units import Quantity
 from .waves_optics.optics import refractive_index
 from .waves_optics.waves import frequency, wave_power, wavelength
+from . import optimal_control
 
 __all__ = [
     "AVOGADRO_CONSTANT",
@@ -136,6 +137,7 @@ __all__ = [
     "weight",
     "work",
     "constants",
+    "optimal_control",
     "V",
     "I",
     "R",
