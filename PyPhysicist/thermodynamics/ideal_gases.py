@@ -1,8 +1,7 @@
 """Ideal gas relationships."""
 
-import numpy as np
-
 from ..constants import IDEAL_GAS_CONSTANT
+from ..units import coerce_value, wrap_quantity
 
 
 def ideal_gas_pressure(n: float, r: float = IDEAL_GAS_CONSTANT, t: float = None, v: float = None):
@@ -19,11 +18,12 @@ def ideal_gas_pressure(n: float, r: float = IDEAL_GAS_CONSTANT, t: float = None,
     """
     if t is None or v is None:
         raise ValueError("Both temperature 't' and volume 'v' must be provided.")
-    n = np.asarray(n)
-    r = np.asarray(r)
-    t = np.asarray(t)
-    v = np.asarray(v)
-    return (n * r * t) / v
+    n_value, _ = coerce_value(n, "mol", name="n")
+    r_value, _ = coerce_value(r, "J/mol*K", name="r")
+    t_value, _ = coerce_value(t, "K", name="t")
+    v_value, _ = coerce_value(v, "m^3", name="v")
+    result = (n_value * r_value * t_value) / v_value
+    return wrap_quantity(result, "Pa", n, r, t, v)
 
 
 __all__ = ["ideal_gas_pressure"]

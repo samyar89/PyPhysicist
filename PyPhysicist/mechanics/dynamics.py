@@ -1,6 +1,6 @@
 """Dynamics formulas."""
 
-import numpy as np
+from ..units import coerce_value, wrap_quantity
 
 
 def force(mass: float, acceleration: float):
@@ -9,9 +9,10 @@ def force(mass: float, acceleration: float):
     Dimensional safety is critical: mass and acceleration must be in
     compatible units (e.g., kg and m/s^2).
     """
-    mass = np.asarray(mass)
-    acceleration = np.asarray(acceleration)
-    return mass * acceleration
+    mass_value, mass_unit = coerce_value(mass, "kg", name="mass")
+    acc_value, acc_unit = coerce_value(acceleration, "m/s^2", name="acceleration")
+    result = mass_value * acc_value
+    return wrap_quantity(result, "N", mass, acceleration)
 
 
 def newton_second_law(mass: float, acceleration: float):
@@ -25,24 +26,27 @@ def momentum(mass: float, velocity: float):
     Dimensional safety is critical: mass and velocity must be in compatible
     units (e.g., kg and m/s).
     """
-    mass = np.asarray(mass)
-    velocity = np.asarray(velocity)
-    return mass * velocity
+    mass_value, mass_unit = coerce_value(mass, "kg", name="mass")
+    velocity_value, velocity_unit = coerce_value(velocity, "m/s", name="velocity")
+    result = mass_value * velocity_value
+    return wrap_quantity(result, "kg*m/s", mass, velocity)
 
 
 def centripetal_force(mass: float, speed: float, radius: float):
     """Calculate centripetal force for circular motion."""
-    mass = np.asarray(mass)
-    speed = np.asarray(speed)
-    radius = np.asarray(radius)
-    return mass * (speed ** 2) / radius
+    mass_value, mass_unit = coerce_value(mass, "kg", name="mass")
+    speed_value, speed_unit = coerce_value(speed, "m/s", name="speed")
+    radius_value, radius_unit = coerce_value(radius, "m", name="radius")
+    result = mass_value * (speed_value ** 2) / radius_value
+    return wrap_quantity(result, "N", mass, speed, radius)
 
 
 def weight(mass: float, gravity: float):
     """Calculate weight from mass and gravitational acceleration."""
-    mass = np.asarray(mass)
-    gravity = np.asarray(gravity)
-    return mass * gravity
+    mass_value, mass_unit = coerce_value(mass, "kg", name="mass")
+    gravity_value, gravity_unit = coerce_value(gravity, "m/s^2", name="gravity")
+    result = mass_value * gravity_value
+    return wrap_quantity(result, "N", mass, gravity)
 
 
 F = force

@@ -80,7 +80,7 @@ from .relativity.special import (
 )
 from .thermodynamics.heat import entropy_change, heat_capacity
 from .thermodynamics.ideal_gases import ideal_gas_pressure
-from .units import Quantity
+from .units import Quantity, UnitError
 from .waves_optics.optics import refractive_index
 from .waves_optics.waves import frequency, wave_power, wavelength
 from . import optimal_control
@@ -105,6 +105,7 @@ __all__ = [
     "SPEED_OF_LIGHT",
     "STANDARD_GRAVITY",
     "Quantity",
+    "UnitError",
     "capacitance",
     "centripetal_acceleration",
     "centripetal_force",

@@ -75,9 +75,9 @@ pytest
 
 2. Units management and dimensional-safety
 
-   A lightweight `Quantity` type is included under `PyPhysicist.units`, and the API is compatible with Pint-style quantities for dimensional safety.
+   A lightweight `Quantity` type is included under `PyPhysicist.units`. Formula helpers now accept `Quantity` inputs, validate dimensional compatibility, and return `Quantity` outputs when unit-tagged values are provided.
 
-   Define a simple internal `Quantity` (if you want to avoid external dependencies) that stores a value and its unit.
+   The bundled converter (`convert_value`) handles common SI unit conversions and raises `UnitError` on incompatible units.
 
 3. NumPy and array support
 
