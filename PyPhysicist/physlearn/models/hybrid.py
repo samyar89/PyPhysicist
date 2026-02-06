@@ -44,7 +44,8 @@ class NeuralCorrectorSurrogate(BaseSurrogate):
         residual = y - coarse
         self.model_ = self._build_model(x.shape[1], residual.shape[1] if residual.ndim > 1 else 1)
         config = TrainConfig.from_kwargs(kwargs)
-        train_torch_regression(self.model_, x, residual, config=config)
+        callbacks = kwargs.get("callbacks")
+        train_torch_regression(self.model_, x, residual, config=config, callbacks=callbacks)
         return self
 
     def predict(

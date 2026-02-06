@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import numpy as np
+from math import erf
 
 
 def _erf_inv(x: np.ndarray) -> np.ndarray:
@@ -14,6 +15,11 @@ def _erf_inv(x: np.ndarray) -> np.ndarray:
     first = 2 / (np.pi * a) + ln / 2
     second = ln / a
     return sign * np.sqrt(np.sqrt(first**2 - second) - first)
+
+
+def _erf(x: np.ndarray) -> np.ndarray:
+    erf_vec = np.vectorize(erf)
+    return erf_vec(x)
 
 
 def rmse(pred: np.ndarray, target: np.ndarray) -> float:
@@ -45,7 +51,7 @@ def crps_gaussian(mean: np.ndarray, std: np.ndarray, target: np.ndarray) -> floa
     target = np.asarray(target)
     z = (target - mean) / np.clip(std, 1e-12, None)
     pdf = (1.0 / np.sqrt(2.0 * np.pi)) * np.exp(-0.5 * z**2)
-    cdf = 0.5 * (1.0 + np.erf(z / np.sqrt(2.0)))
+    cdf = 0.5 * (1.0 + _erf(z / np.sqrt(2.0)))
     score = std * (z * (2 * cdf - 1) + 2 * pdf - 1 / np.sqrt(np.pi))
     return float(np.mean(score))
 
