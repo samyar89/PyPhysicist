@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from math import erf
 from typing import Callable, Optional, Tuple
 
 import numpy as np
@@ -26,7 +27,8 @@ def expected_improvement(mean: np.ndarray, std: np.ndarray, best: float) -> np.n
     std = np.asarray(std)
     std_safe = np.where(std == 0, 1e-12, std)
     z = (best - mean) / std_safe
-    cdf = 0.5 * (1.0 + np.erf(z / np.sqrt(2.0)))
+    erf_vec = np.vectorize(erf)
+    cdf = 0.5 * (1.0 + erf_vec(z / np.sqrt(2.0)))
     pdf = (1.0 / np.sqrt(2.0 * np.pi)) * np.exp(-0.5 * z**2)
     return (best - mean) * cdf + std_safe * pdf
 

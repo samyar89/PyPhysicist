@@ -9,10 +9,10 @@ import numpy as np
 
 def burgers_1d(n_samples: int = 128, viscosity: float = 0.01, seed: int = 0) -> Dict[str, np.ndarray]:
     rng = np.random.default_rng(seed)
-    x = np.linspace(0, 1, n_samples)
+    x = np.linspace(0, 1, n_samples)[:, None]
     params = rng.uniform(0.5, 1.5, size=(n_samples, 1))
-    u = np.sin(2 * np.pi * x * params).reshape(-1, 1) * np.exp(-viscosity * x)[:, None]
-    return {"x": x[:, None], "y": u}
+    u = np.sin(2 * np.pi * x * params) * np.exp(-viscosity * x)
+    return {"x": x, "y": u}
 
 
 def heat_1d(n_samples: int = 128, conductivity: float = 0.5) -> Dict[str, np.ndarray]:

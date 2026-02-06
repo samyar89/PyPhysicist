@@ -105,7 +105,8 @@ class FNOOperatorSurrogate(BaseSurrogate):
         x, y = _extract_xy(dataset, y)
         self.model_ = self._build_model()
         config = TrainConfig.from_kwargs(kwargs)
-        train_torch_regression(self.model_, x, y, config=config)
+        callbacks = kwargs.get("callbacks")
+        train_torch_regression(self.model_, x, y, config=config, callbacks=callbacks)
         return self
 
     def predict(

@@ -1,0 +1,41 @@
+seed: 42
+device: auto
+artifacts_dir: artifacts
+data:
+  n_train_low: 800
+  n_train_high: 80
+  n_val: 80
+  n_test: 100
+  viscosity_low: 0.02
+  viscosity_high: 0.01
+models:
+  fno:
+    modes: 16
+    width: 64
+    depth: 4
+    activation: gelu
+  pinn:
+    width: 128
+    depth: 4
+  hybrid:
+    width: 64
+    depth: 3
+training:
+  fno:
+    epochs: 200
+    batch_size: 16
+    lr: 0.001
+    weight_decay: 0.000001
+  pinn:
+    epochs: 600
+    batch_size: 32
+    lr: 0.001
+    adaptive_loss: true
+  hybrid:
+    pretrain_epochs: 150
+    finetune_epochs: 150
+    batch_size: 32
+    lr: 0.001
+evaluation:
+  coverage_alpha: 0.95
+  calibration_bins: 9
