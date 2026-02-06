@@ -41,3 +41,13 @@ def test_quantity_addition_with_unit_conversion():
     result = left + right
     assert result.unit == "m"
     assert result.value == pytest.approx(1.5)
+
+
+def test_pyphysicist_module_import_and_pow():
+    import PyPhysicist.PyPhysicist as pp_module
+
+    velocity = pp_module.Quantity(95.0, "km/h")
+    mass = pp_module.Quantity(1.0, "Mg")
+    energy = 0.5 * mass * (velocity**2)
+    assert energy.unit == "m^2*kg/s^2"
+    assert energy.value == pytest.approx(348186.72839506174, rel=1e-6)
