@@ -26,6 +26,20 @@ helpers.
    v = Quantity(12.0, "m/s")
    print(v)
 
+The :class:`~PyPhysicist.units.Quantity` helper also supports basic arithmetic
+operators. Addition/subtraction requires compatible units, while
+multiplication/division propagates unit dimensions:
+
+.. code-block:: python
+
+   from PyPhysicist import Quantity
+
+   force = Quantity(575, "N")
+   mass = Quantity(10011, "Mg")
+   acceleration = force / mass
+
+   print(acceleration)  # Quantity(value=..., unit='m/s^2')
+
 You can also convert values or catch dimensional errors explicitly:
 
 .. code-block:: python
