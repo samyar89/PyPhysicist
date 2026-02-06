@@ -177,7 +177,7 @@ DEFAULT_FORMULAS: dict[str, LatexFormula] = {
     "velocity": LatexFormula(
         name="velocity",
         result_symbol="v",
-        rhs_template=r"\\frac{{{distance}}}{{{time}}}",
+        rhs_template=r"\frac{{{distance}}}{{{time}}}",
         parameters=("distance", "time"),
         parameter_symbols={"distance": "d", "time": "t"},
         evaluator=velocity,
@@ -185,7 +185,7 @@ DEFAULT_FORMULAS: dict[str, LatexFormula] = {
     "centripetal_acceleration": LatexFormula(
         name="centripetal_acceleration",
         result_symbol="a_c",
-        rhs_template=r"\\frac{{{speed}}^2}{{{radius}}}",
+        rhs_template=r"\frac{{{speed}}^2}{{{radius}}}",
         parameters=("speed", "radius"),
         parameter_symbols={"speed": "v", "radius": "r"},
         evaluator=centripetal_acceleration,
@@ -193,7 +193,7 @@ DEFAULT_FORMULAS: dict[str, LatexFormula] = {
     "force": LatexFormula(
         name="force",
         result_symbol="F",
-        rhs_template=r"{mass}\\, {acceleration}",
+        rhs_template=r"{mass}\, {acceleration}",
         parameters=("mass", "acceleration"),
         parameter_symbols={"mass": "m", "acceleration": "a"},
         evaluator=force,
@@ -201,7 +201,7 @@ DEFAULT_FORMULAS: dict[str, LatexFormula] = {
     "newton_second_law": LatexFormula(
         name="newton_second_law",
         result_symbol="F",
-        rhs_template=r"{mass}\\, {acceleration}",
+        rhs_template=r"{mass}\, {acceleration}",
         parameters=("mass", "acceleration"),
         parameter_symbols={"mass": "m", "acceleration": "a"},
         evaluator=newton_second_law,
@@ -209,7 +209,7 @@ DEFAULT_FORMULAS: dict[str, LatexFormula] = {
     "momentum": LatexFormula(
         name="momentum",
         result_symbol="p",
-        rhs_template=r"{mass}\\, {velocity}",
+        rhs_template=r"{mass}\, {velocity}",
         parameters=("mass", "velocity"),
         parameter_symbols={"mass": "m", "velocity": "v"},
         evaluator=momentum,
@@ -217,7 +217,7 @@ DEFAULT_FORMULAS: dict[str, LatexFormula] = {
     "centripetal_force": LatexFormula(
         name="centripetal_force",
         result_symbol="F_c",
-        rhs_template=r"\\frac{{{mass}\\, {speed}^2}}{{{radius}}}",
+        rhs_template=r"\frac{{{mass}\, {speed}^2}}{{{radius}}}",
         parameters=("mass", "speed", "radius"),
         parameter_symbols={"mass": "m", "speed": "v", "radius": "r"},
         evaluator=centripetal_force,
@@ -225,7 +225,7 @@ DEFAULT_FORMULAS: dict[str, LatexFormula] = {
     "weight": LatexFormula(
         name="weight",
         result_symbol="W",
-        rhs_template=r"{mass}\\, {gravity}",
+        rhs_template=r"{mass}\, {gravity}",
         parameters=("mass", "gravity"),
         parameter_symbols={"mass": "m", "gravity": "g"},
         evaluator=weight,
@@ -233,7 +233,7 @@ DEFAULT_FORMULAS: dict[str, LatexFormula] = {
     "kinetic_energy": LatexFormula(
         name="kinetic_energy",
         result_symbol="K",
-        rhs_template=r"\\frac{1}{2} {mass}\\, {velocity}^2",
+        rhs_template=r"\frac{1}{2} {mass}\, {velocity}^2",
         parameters=("mass", "velocity"),
         parameter_symbols={"mass": "m", "velocity": "v"},
         evaluator=kinetic_energy,
@@ -241,7 +241,7 @@ DEFAULT_FORMULAS: dict[str, LatexFormula] = {
     "gravitational_potential_energy": LatexFormula(
         name="gravitational_potential_energy",
         result_symbol="U_g",
-        rhs_template=r"{mass}\\, {gravity}\\, {height}",
+        rhs_template=r"{mass}\, {gravity}\, {height}",
         parameters=("mass", "gravity", "height"),
         parameter_symbols={"mass": "m", "gravity": "g", "height": "h"},
         evaluator=gravitational_potential_energy,
@@ -257,7 +257,7 @@ DEFAULT_FORMULAS: dict[str, LatexFormula] = {
     "spring_potential_energy": LatexFormula(
         name="spring_potential_energy",
         result_symbol="U_s",
-        rhs_template=r"\\frac{1}{2} {spring_constant}\\, {displacement}^2",
+        rhs_template=r"\frac{1}{2} {spring_constant}\, {displacement}^2",
         parameters=("spring_constant", "displacement"),
         parameter_symbols={"spring_constant": "k", "displacement": "x"},
         evaluator=spring_potential_energy,
@@ -265,7 +265,7 @@ DEFAULT_FORMULAS: dict[str, LatexFormula] = {
     "work": LatexFormula(
         name="work",
         result_symbol="W",
-        rhs_template=r"{force_value}\\, {displacement}",
+        rhs_template=r"{force_value}\, {displacement}",
         parameters=("force_value", "displacement"),
         parameter_symbols={"force_value": "F", "displacement": "d"},
         evaluator=work,
@@ -273,7 +273,7 @@ DEFAULT_FORMULAS: dict[str, LatexFormula] = {
     "coulomb_force": LatexFormula(
         name="coulomb_force",
         result_symbol="F",
-        rhs_template=r"\\frac{{k\\, {charge1}\\, {charge2}}}{{{distance}^2}}",
+        rhs_template=r"\frac{{k\, {charge1}\, {charge2}}}{{{distance}^2}}",
         parameters=("charge1", "charge2", "distance"),
         parameter_symbols={"charge1": "q_1", "charge2": "q_2", "distance": "r"},
         evaluator=coulomb_force,
@@ -281,7 +281,7 @@ DEFAULT_FORMULAS: dict[str, LatexFormula] = {
     "electric_field": LatexFormula(
         name="electric_field",
         result_symbol="E",
-        rhs_template=r"\\frac{{{force_value}}}{{{charge}}}",
+        rhs_template=r"\frac{{{force_value}}}{{{charge}}}",
         parameters=("force_value", "charge"),
         parameter_symbols={"force_value": "F", "charge": "q"},
         evaluator=electric_field,
@@ -289,7 +289,7 @@ DEFAULT_FORMULAS: dict[str, LatexFormula] = {
     "capacitance": LatexFormula(
         name="capacitance",
         result_symbol="C",
-        rhs_template=r"\\frac{{{charge}}}{{{voltage}}}",
+        rhs_template=r"\frac{{{charge}}}{{{voltage}}}",
         parameters=("charge", "voltage"),
         parameter_symbols={"charge": "Q", "voltage": "V"},
         evaluator=capacitance,
@@ -297,7 +297,7 @@ DEFAULT_FORMULAS: dict[str, LatexFormula] = {
     "voltage": LatexFormula(
         name="voltage",
         result_symbol="V",
-        rhs_template=r"{current}\\, {resistance}",
+        rhs_template=r"{current}\, {resistance}",
         parameters=("current", "resistance"),
         parameter_symbols={"current": "I", "resistance": "R"},
         evaluator=voltage,
@@ -305,7 +305,7 @@ DEFAULT_FORMULAS: dict[str, LatexFormula] = {
     "current": LatexFormula(
         name="current",
         result_symbol="I",
-        rhs_template=r"\\frac{{{voltage_value}}}{{{resistance}}}",
+        rhs_template=r"\frac{{{voltage_value}}}{{{resistance}}}",
         parameters=("voltage_value", "resistance"),
         parameter_symbols={"voltage_value": "V", "resistance": "R"},
         evaluator=current,
@@ -313,7 +313,7 @@ DEFAULT_FORMULAS: dict[str, LatexFormula] = {
     "resistance": LatexFormula(
         name="resistance",
         result_symbol="R",
-        rhs_template=r"\\frac{{{voltage_value}}}{{{current_value}}}",
+        rhs_template=r"\frac{{{voltage_value}}}{{{current_value}}}",
         parameters=("voltage_value", "current_value"),
         parameter_symbols={"voltage_value": "V", "current_value": "I"},
         evaluator=resistance,
@@ -331,7 +331,7 @@ DEFAULT_FORMULAS: dict[str, LatexFormula] = {
     "resistance_parallel": LatexFormula(
         name="resistance_parallel",
         result_symbol="R_{eq}",
-        rhs_template=r"\\left( {resistances} \\right)^{{-1}}",
+        rhs_template=r"\left( {resistances} \right)^{{-1}}",
         parameters=("resistances",),
         parameter_symbols={"resistances": "\\frac{1}{R_1} + \\frac{1}{R_2} + \\cdots + \\frac{1}{R_n}"},
         evaluator=resistance_parallel,
@@ -341,7 +341,7 @@ DEFAULT_FORMULAS: dict[str, LatexFormula] = {
     "refractive_index": LatexFormula(
         name="refractive_index",
         result_symbol="n",
-        rhs_template=r"\\frac{{{speed_of_light}}}{{{medium_speed}}}",
+        rhs_template=r"\frac{{{speed_of_light}}}{{{medium_speed}}}",
         parameters=("speed_of_light", "medium_speed"),
         parameter_symbols={"speed_of_light": "c", "medium_speed": "v"},
         evaluator=refractive_index,
@@ -349,7 +349,7 @@ DEFAULT_FORMULAS: dict[str, LatexFormula] = {
     "frequency": LatexFormula(
         name="frequency",
         result_symbol="f",
-        rhs_template=r"\\frac{{{wave_speed}}}{{{wavelength_value}}}",
+        rhs_template=r"\frac{{{wave_speed}}}{{{wavelength_value}}}",
         parameters=("wave_speed", "wavelength_value"),
         parameter_symbols={"wave_speed": "v", "wavelength_value": "\\lambda"},
         evaluator=frequency,
@@ -357,7 +357,7 @@ DEFAULT_FORMULAS: dict[str, LatexFormula] = {
     "wavelength": LatexFormula(
         name="wavelength",
         result_symbol="\\lambda",
-        rhs_template=r"\\frac{{{wave_speed}}}{{{frequency_hz}}}",
+        rhs_template=r"\frac{{{wave_speed}}}{{{frequency_hz}}}",
         parameters=("wave_speed", "frequency_hz"),
         parameter_symbols={"wave_speed": "v", "frequency_hz": "f"},
         evaluator=wavelength,
@@ -365,7 +365,7 @@ DEFAULT_FORMULAS: dict[str, LatexFormula] = {
     "wave_power": LatexFormula(
         name="wave_power",
         result_symbol="P",
-        rhs_template=r"\\frac{{{energy}}}{{{time}}}",
+        rhs_template=r"\frac{{{energy}}}{{{time}}}",
         parameters=("energy", "time"),
         parameter_symbols={"energy": "E", "time": "t"},
         evaluator=wave_power,
@@ -373,7 +373,7 @@ DEFAULT_FORMULAS: dict[str, LatexFormula] = {
     "heat_capacity": LatexFormula(
         name="heat_capacity",
         result_symbol="c",
-        rhs_template=r"\\frac{{{heat}}}{{{mass}\\, {delta_t}}}",
+        rhs_template=r"\frac{{{heat}}}{{{mass}\, {delta_t}}}",
         parameters=("heat", "mass", "delta_t"),
         parameter_symbols={"heat": "Q", "mass": "m", "delta_t": "\\Delta T"},
         evaluator=heat_capacity,
@@ -381,7 +381,7 @@ DEFAULT_FORMULAS: dict[str, LatexFormula] = {
     "entropy_change": LatexFormula(
         name="entropy_change",
         result_symbol="\\Delta S",
-        rhs_template=r"\\frac{{{heat}}}{{{temperature}}}",
+        rhs_template=r"\frac{{{heat}}}{{{temperature}}}",
         parameters=("heat", "temperature"),
         parameter_symbols={"heat": "Q", "temperature": "T"},
         evaluator=entropy_change,
@@ -389,7 +389,7 @@ DEFAULT_FORMULAS: dict[str, LatexFormula] = {
     "ideal_gas_pressure": LatexFormula(
         name="ideal_gas_pressure",
         result_symbol="P",
-        rhs_template=r"\\frac{{{n}\\, {r}\\, {t}}}{{{v}}}",
+        rhs_template=r"\frac{{{n}\, {r}\, {t}}}{{{v}}}",
         parameters=("n", "r", "t", "v"),
         parameter_symbols={"n": "n", "r": "R", "t": "T", "v": "V"},
         evaluator=ideal_gas_pressure,
@@ -397,7 +397,7 @@ DEFAULT_FORMULAS: dict[str, LatexFormula] = {
     "time_dilation": LatexFormula(
         name="time_dilation",
         result_symbol="t",
-        rhs_template=r"\\frac{{{proper_time}}}{{\\sqrt{1 - \\frac{{{velocity}^2}}{{{c}^2}}}}}",
+        rhs_template=r"\frac{{{proper_time}}}{{\sqrt{1 - \frac{{{velocity}^2}}{{{c}^2}}}}}",
         parameters=("proper_time", "velocity", "c"),
         parameter_symbols={"proper_time": "t_0", "velocity": "v", "c": "c"},
         evaluator=time_dilation,
@@ -405,7 +405,7 @@ DEFAULT_FORMULAS: dict[str, LatexFormula] = {
     "length_contraction": LatexFormula(
         name="length_contraction",
         result_symbol="L",
-        rhs_template=r"{proper_length}\\, \\sqrt{1 - \\frac{{{velocity}^2}}{{{c}^2}}}",
+        rhs_template=r"{proper_length}\, \sqrt{1 - \frac{{{velocity}^2}}{{{c}^2}}}",
         parameters=("proper_length", "velocity", "c"),
         parameter_symbols={"proper_length": "L_0", "velocity": "v", "c": "c"},
         evaluator=length_contraction,
@@ -413,7 +413,7 @@ DEFAULT_FORMULAS: dict[str, LatexFormula] = {
     "relativistic_energy": LatexFormula(
         name="relativistic_energy",
         result_symbol="E",
-        rhs_template=r"{mass}\\, {c}^2",
+        rhs_template=r"{mass}\, {c}^2",
         parameters=("mass", "c"),
         parameter_symbols={"mass": "m", "c": "c"},
         evaluator=relativistic_energy,
@@ -421,7 +421,7 @@ DEFAULT_FORMULAS: dict[str, LatexFormula] = {
     "schwarzschild_radius": LatexFormula(
         name="schwarzschild_radius",
         result_symbol="r_s",
-        rhs_template=r"\\frac{{2\\, {g}\\, {mass}}}{{{c}^2}}",
+        rhs_template=r"\frac{{2\, {g}\, {mass}}}{{{c}^2}}",
         parameters=("mass", "g", "c"),
         parameter_symbols={"mass": "M", "g": "G", "c": "c"},
         evaluator=schwarzschild_radius,
