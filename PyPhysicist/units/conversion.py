@@ -47,6 +47,7 @@ _UNIT_DEFINITIONS: Dict[str, UnitSpec] = {
     "kg": UnitSpec(1.0, {"kg": 1}),
     "g": UnitSpec(1.0e-3, {"kg": 1}),
     "mg": UnitSpec(1.0e-6, {"kg": 1}),
+    "Mg": UnitSpec(1.0e3, {"kg": 1}),
     "A": UnitSpec(1.0, {"A": 1}),
     "K": UnitSpec(1.0, {"K": 1}),
     "degC": UnitSpec(1.0, {"K": 1}, offset=273.15),
